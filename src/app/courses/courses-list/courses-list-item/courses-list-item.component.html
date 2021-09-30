@@ -1,0 +1,29 @@
+    <div class="card  mb-5 h-100" >
+        <div class="col ">
+            
+            <img  class="card-img-top"  [src]="course.photo" alt="Card image cap">
+            
+                <div class="card-body text-dark">
+                    <h5 class="card-title">
+                        {{ course.title }}
+                    </h5>
+                    <button class="btn btn-default pull-right" (click)="onDeleteCourse(course)">
+                        Supprimer
+                        <span class="glyphicon glyphicon-minus">                         
+                        </span>
+                    </button> 
+                    <h6 class="card-subtitle mb-lg-4 text-muted">
+                        {{ course.category }}
+                    </h6>
+                    <p class="card-text">
+                        {{ course.description}}
+                    </p>
+            
+                    <button (click)="onWatch()" class="btn btn-outline-success pull-left">
+                        Learn {{course.title}}
+                    </button> 
+                </div>
+        </div>
+    </div>
+
+  

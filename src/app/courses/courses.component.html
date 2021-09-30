@@ -1,37 +1,117 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
 
-<div class="text-xxl-center">
+<div class="text-xxl-center" style="padding-top: 50px;">
    
       <h1  class="display-4" style=" font-family: 'Roboto', sans-serif; color: #134e6f;"  >Courses</h1>
       <div>
+
         <ul class="list-inline justify-content-center">
+          <li routerLinkActive="active" class="list-inline-item">
+            <button (click)="onCategory('All')"   class="btn btn-default pull-right" style=" padding-right:30px; color: black;" >All</button>
+
+          </li>
+         
+          <li routerLinkActive="active"  class="list-inline-item">
+            <button (click)="onCategory('Developer')" class="btn btn-default pull-right"  style=" padding-right:30px; color: black; "  >Developer</button>
+          </li>
+        
+          <li  class="list-inline-item">
+          <button (click)="onCategory('Business')" class="btn btn-default pull-right"  style=" padding-right:30px; color: black; "  >Business</button>
+          </li>
+          
           <li class="list-inline-item">
-            <a  style=" padding-right:30px; color: black; " class="nav-link" aria-current="page" href="#">All</a>
+            <button (click)="onCategory(' Photography')" class="btn btn-default pull-right"  style=" padding-right:30px; color: black; ">Photography</button>
           </li>
           <li class="list-inline-item">
-            <a  style=" padding-right:30px; color: black; " class="nav-link" aria-current="page" href="#">Developer</a>
-          </li>
-          <li class="list-inline-item">
-            <a  style=" padding-right:30px; color: black; " class="nav-link" aria-current="page" href="#">Business</a>
-          </li>
-          <li class="list-inline-item">
-            <a  style=" padding-right:30px; color: black; " class="nav-link" aria-current="page" href="#">Web</a>
-          </li>
-          <li class="list-inline-item">
-            <a  style=" padding-right:30px; color: black; " class="nav-link" aria-current="page" href="#">Photography</a>
-          </li>
-          <li class="list-inline-item">
-            <a  style=" padding-right:30px ; color: black;" class="nav-link" aria-current="page" href="#">Marketing</a>
+            <button (click)="onCategory('Marketing')" class="btn btn-default pull-right" style=" padding-right:30px ; color: black;">Marketing</button>
           </li> 
-
-      <!--   <li routerLinkActive="active">
-            <a routerLink="home" style="padding-left: 40px; padding-right:50px " class="nav-link" aria-current="page" href="#">Home</a>
-          </li> -->   
-
         </ul>
       </div>
-        
+    </div>
 
+
+<!-- Affichage All -->
+    <div *ngIf="categ=='' || categ=='All' " class="d-flex mt-5 justify-content-center">
+      <div class="container">
+    <app-courses-list> </app-courses-list>
+      </div>
+  </div>
+
+<!-- Affichage Developer -->
+
+<div class="container">
+  <div *ngIf="categ=='Developer' " class="d-flex mt-5 justify-content-center">
+    <div class="container">
+
+  <div  class="row row-cols-1 row-cols-md-3 g-4 ">
+
+    <app-courses-list-item
+    *ngFor="let course of DeveloperCours; let i=index;"
+    [course]="course">
+    </app-courses-list-item>
+
+  </div>
+  </div>
+  </div>
+  </div>
+  
+<!-- Affichage Business -->
+
+<div class="container">
+  <div *ngIf="categ=='Business' " class="d-flex mt-5 justify-content-center">
+    <div class="container">
+
+  <div  class="row row-cols-1 row-cols-md-3 g-4 ">
+
+    <app-courses-list-item
+    *ngFor="let course of BusinessCours; let i=index;"
+    [course]="course">
+    </app-courses-list-item>
+
+  </div>
+  </div>
+  </div>
+  </div>
+
+<!-- Affichage Photography -->
+<div class="container">
+  <div *ngIf="categ==' Photography' " class="d-flex mt-5 justify-content-center">
+    <div class="container">
+      <div  class="row row-cols-1 row-cols-md-3 g-4 ">
+
+    <app-courses-list-item 
+      *ngFor="let course of PhotographyCours; let i=index;"
+      [course]="course" >
+
+    </app-courses-list-item>
+  </div>
+  </div>
+  </div>
 </div>
+
+<!-- Affichage Marketing -->
+  <div class="container">
+  <div *ngIf="categ=='Marketing' " class="d-flex mt-5 justify-content-center">
+    <div class="container">
+      <div  class="row row-cols-1 row-cols-md-3 g-4 ">
+    <app-courses-list-item 
+      *ngFor="let course of MarketingCours; let i=index;"
+      [course]="course" >
+
+    </app-courses-list-item>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+
+  
+
+      
+       
+
+
+     

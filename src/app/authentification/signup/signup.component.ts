@@ -22,9 +22,9 @@ export class SignupComponent implements OnInit {
   initForm() {
     this.signupForm=this.formBuilder.group(
       {
-        nom:['',[Validators.required]],
-        prenom:['',[Validators.required]],
-        dateNaiss:['',[Validators.required]],
+        fname:['',[Validators.required]],
+        lname:['',[Validators.required]],
+        birthDate:['',[Validators.required]],
         sexe:['',[Validators.required]],
         niveau:['',[Validators.required]],
         speacialite:['',[Validators.required]],
