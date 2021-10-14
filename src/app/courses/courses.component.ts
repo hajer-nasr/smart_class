@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Course } from './courses.model';
@@ -11,8 +11,8 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent implements OnInit {
-
+export class CoursesComponent implements OnInit,OnDestroy   {
+// @Input()
   courses:Course[]=[];
   coursesSubscription!:Subscription;
   categ:string='';
@@ -20,17 +20,25 @@ export class CoursesComponent implements OnInit {
   MarketingCours:any[]=[];
   BusinessCours:any[]=[];
   PhotographyCours:any[]=[];
+  DesignCours:any[]=[];
+  AllCours:any[]=[];
 
-  constructor(private router:Router,  private courseService:CourseService,@Inject(DOCUMENT) private document: Document) { }
+
+  constructor(private router:Router,
+      private courseService:CourseService,
+      @Inject(DOCUMENT) private document: Document
+      )  { 
+      }
   
-  ngOnInit(): void {
+     ngOnInit(): void {
       this.coursesSubscription=this.courseService.coursesSubject.subscribe(
         (courses:Course[]) => {
-          this.courses=courses;       
+          this.courses=courses;  
         }
       );
       this.courseService.getCourses();
       this.courseService.emitCourses();
+      this.onCategory('');
   }
 
   onNewCourse() {
@@ -39,41 +47,58 @@ export class CoursesComponent implements OnInit {
       
   onDeleteCourse(course: Course) {
     this.courseService.removeCourse(course);
-  }
+    }
+    
 
   onViewCourse(id: number) {
     this.router.navigate(['/courses', 'view', id]);
   }
 
-  onWatch(id: number) {
-    var lien=this.courses[id].href;
-    this.document.location.href =lien;
-  }
-    
-  ngOnDestroy() {
-    this.coursesSubscription.unsubscribe();
-  }
+ 
 
   onCategory(param:string){
       this.DeveloperCours=[];
       this.BusinessCours=[];
       this.MarketingCours=[];
       this.PhotographyCours=[]; 
+      this.DesignCours=[];
+      this.AllCours=[];
       this.categ=param;
-     
       this.courses.filter((cours)=>{ 
+        if(cours.category === ''){
+          this.AllCours.push(cours);
+        }
           if(cours.category === 'Developer'){
-            console.log(this.DeveloperCours.includes(cours.category))
-            this.DeveloperCours.push(cours)
+            this.DeveloperCours.push(cours);
+            this.AllCours.push(cours);
           }
           if(cours.category === 'Marketing' ){
-            this.MarketingCours.push(cours)
+            this.MarketingCours.push(cours);
+            this.AllCours.push(cours);
+
           }
           if(cours.category === ' Photography' ){
-            this.PhotographyCours.push(cours)
+            this.PhotographyCours.push(cours);
+            this.AllCours.push(cours);
+
+          }
+          if(cours.category === 'Business' ){
+            this.BusinessCours.push(cours);
+            this.AllCours.push(cours);
+
+          }
+          if(cours.category === 'Design' ){
+            this.DesignCours.push(cours);
+            this.AllCours.push(cours);
+
           }
       })
         this.courseService.getCourses(); 
         this.courseService.emitCourses();
   }
+  
+  ngOnDestroy() {
+    this.coursesSubscription.unsubscribe();
+  }
+
 }

@@ -1,6 +1,3 @@
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
 
 <div class="text-xxl-center" style="padding-top: 50px;">
    
@@ -27,20 +24,27 @@
           <li class="list-inline-item">
             <button (click)="onCategory('Marketing')" class="btn btn-default pull-right" style=" padding-right:30px ; color: black;">Marketing</button>
           </li> 
+          <li class="list-inline-item">
+            <button (click)="onCategory('Design')" class="btn btn-default pull-right" style=" padding-right:30px ; color: black;">Design</button>
+          </li> 
         </ul>
       </div>
     </div>
-
-
 <!-- Affichage All -->
+<div class="container">
     <div *ngIf="categ=='' || categ=='All' " class="d-flex mt-5 justify-content-center">
       <div class="container">
-    <app-courses-list> </app-courses-list>
+        <div  class="row row-cols-1 row-cols-md-3 g-4 ">
+    <app-courses-list-item 
+    *ngFor="let course of AllCours; let i=index;"
+    [course]="course"
+     (click)="onViewCourse(i+1)"> </app-courses-list-item> 
       </div>
   </div>
+    </div>
+</div>
 
 <!-- Affichage Developer -->
-
 <div class="container">
   <div *ngIf="categ=='Developer' " class="d-flex mt-5 justify-content-center">
     <div class="container">
@@ -49,7 +53,8 @@
 
     <app-courses-list-item
     *ngFor="let course of DeveloperCours; let i=index;"
-    [course]="course">
+    [course]="course"
+    (click)="onViewCourse(i+1)">
     </app-courses-list-item>
 
   </div>
@@ -67,7 +72,25 @@
 
     <app-courses-list-item
     *ngFor="let course of BusinessCours; let i=index;"
-    [course]="course">
+    [course]="course"
+    (click)="onViewCourse(i+1)">
+    </app-courses-list-item>
+
+  </div>
+  </div>
+  </div>
+  </div>
+  <!-- Affichage Design -->
+<div class="container">
+  <div *ngIf="categ=='Design' " class="d-flex mt-5 justify-content-center">
+    <div class="container">
+
+  <div  class="row row-cols-1 row-cols-md-3 g-4 ">
+
+    <app-courses-list-item
+    *ngFor="let course of DesignCours; let i=index;"
+    [course]="course"
+    (click)="onViewCourse(i+1)">
     </app-courses-list-item>
 
   </div>
@@ -83,7 +106,8 @@
 
     <app-courses-list-item 
       *ngFor="let course of PhotographyCours; let i=index;"
-      [course]="course" >
+      [course]="course"
+      (click)="onViewCourse(i+1)" >
 
     </app-courses-list-item>
   </div>
@@ -98,7 +122,8 @@
       <div  class="row row-cols-1 row-cols-md-3 g-4 ">
     <app-courses-list-item 
       *ngFor="let course of MarketingCours; let i=index;"
-      [course]="course" >
+      [course]="course"
+      (click)="onViewCourse(i+1)" >
 
     </app-courses-list-item>
   </div>

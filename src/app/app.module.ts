@@ -11,19 +11,32 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoursesComponent } from './courses/courses.component';
 import { HomeComponent } from './home/home.component';
 import {CourseService} from './services/course.service';
+import { CourseFormComponent } from './admin/course-form/course-form.component';
+import { CoursesListItemComponent } from './courses/courses-list-item/courses-list-item.component';
+import { ToastrModule } from 'ngx-toastr';
+// import { AddCourseComponent } from './admin/add-course/add-course.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CoursesListComponent } from './courses/courses-list/courses-list.component';
-import { CourseFormComponent } from './courses/course-form/course-form.component';
-import { CoursesListItemComponent } from './courses/courses-list/courses-list-item/courses-list-item.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FooterComponent } from './footer/footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { SupportComponent } from './support/support.component';
+import { SupportService } from './services/support.service';
+import { SingleCourseComponent } from './courses/single-course/single-course.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AdminComponent } from './admin/admin.component';
 
  const appRoutes:Routes= [
 {path:'auth/signup', component:SignupComponent},
 {path:'auth/signin', component: SigninComponent},
-{path:'courses',component:CoursesComponent},
-{path:'liste',component:CoursesListComponent},
+{path:'courses',canActivate: [AuthGuardService],component:CoursesComponent},
 {path:'courses/new',component:CourseFormComponent},
 {path:'home',component:HomeComponent},
+{path:'admin',component:AdminComponent},
+{path:'support',component:SupportComponent},
+{ path:'courses/view/:id',canActivate: [AuthGuardService], component: SingleCourseComponent },
+//  { path: 'view-courses', component: ListCourseAdminComponent},
+{ path: 'About-Us', component: AboutUsComponent },
 {path:'',redirectTo:'home',pathMatch:'full'},
 {path:'**',redirectTo:'home'} 
 
@@ -37,9 +50,14 @@ import { CoursesListItemComponent } from './courses/courses-list/courses-list-it
     SignupComponent,
     CoursesComponent,
     HomeComponent,
-    CoursesListComponent,
     CourseFormComponent,
-    CoursesListItemComponent
+    CoursesListItemComponent,
+    FooterComponent,
+    AboutUsComponent,
+    SupportComponent,
+    SingleCourseComponent,
+    AdminComponent,
+    // AddCourseComponent
   ],
   imports: [
     BrowserModule,FormsModule,
@@ -47,10 +65,17 @@ import { CoursesListItemComponent } from './courses/courses-list/courses-list-it
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgxPaginationModule 
+
+
    
   ],
   providers: [
-    AuthService,CourseService
+    AuthService,CourseService,
+    SupportService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

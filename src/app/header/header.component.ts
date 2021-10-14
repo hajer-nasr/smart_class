@@ -11,7 +11,9 @@ import 'firebase/auth';
 export class HeaderComponent implements OnInit {
   isAuth!:boolean;
 
-  constructor(private authService:AuthService) { }
+  constructor(
+    private authService:AuthService,
+  ) { }
 
   ngOnInit(): void {
     firebase.auth().onAuthStateChanged(
@@ -29,8 +31,6 @@ export class HeaderComponent implements OnInit {
 
   onSignOut() {
     this.authService.signOutUser();
-    alert("Vous etes deconnecté");
-
   }
 
 }

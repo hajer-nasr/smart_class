@@ -4,6 +4,7 @@ import 'firebase/auth';
 import { Injectable } from "@angular/core";
 @Injectable()
 export class AuthService {
+    
     createNewUser(email:string,password:string){
         return new Promise<void>(
             (resolve,reject) => {
@@ -18,14 +19,28 @@ export class AuthService {
             }
         );
     }
-
     signInUser(email:string,password:string) {
         return new Promise<void>(
             (resolve,reject) => {
                 firebase.auth().signInWithEmailAndPassword(email,password).then(
                     () => {
                         resolve();
+                    },
+                    (error) => {
+                        reject(error);
 
+                    }
+                );
+            }
+        );
+    }
+
+    signInAdmin(email:string,password:string){
+        return new Promise<void>(
+            (resolve,reject) => {
+                firebase.auth().signInWithEmailAndPassword(email,password).then(
+                    () => {
+                        resolve();
                     },
                     (error) => {
                         reject(error);
@@ -39,6 +54,5 @@ export class AuthService {
     signOutUser() {
         firebase.auth().signOut();
     }
-
 
 }

@@ -1,14 +1,9 @@
-
 .card {
     padding: 30px 40px;
     margin-top: 60px;
     margin-bottom: 60px;
     border: none !important;
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2)
-}
-
-.blue-text {
-    color: #00BCD4
 }
 
 .form-control-label {
@@ -45,13 +40,6 @@ textarea:focus {
     cursor: pointer
 }
 
-.btn-block:hover {
-    color: #fff !important
-}
 
-button:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    outline-width: 0
-}
+
+

@@ -1,0 +1,68 @@
+<div style="padding-top: 100px;" class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2>Save a new course</h2>
+      <form [formGroup]="courseForm" (ngSubmit)="onSaveCourse()">
+        <div class="form-group">
+          <div class="form-group">
+            <label for="id">Id</label>
+            <input type="text" id="id"
+                   class="form-control" formControlName="id">
+          </div>
+          <label for="title">Title</label>
+          <input type="text" id="title"
+                 class="form-control" formControlName="title">
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" id="category"
+                 class="form-control" formControlName="category">
+        </div>
+        <div class="form-group">
+          <label for="duration">Duration</label>
+          <input type="text" id="duration"
+                 class="form-control" formControlName="duration">
+        </div>
+        <div class="form-group">
+          <label for="level">Level</label>
+          <input type="text" id="level"
+                 class="form-control" formControlName="level">
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="text" id="date"
+                 class="form-control" formControlName="date">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description"
+                 class="form-control" formControlName="description">
+          </textarea>
+        </div>
+       
+
+        <div class="form-group">
+          <label for="details">Course Details </label>
+          <textarea id="details"
+                 class="form-control" formControlName="details" rows="5">
+          </textarea>
+        </div>
+        <div class="form-group">
+          <h4>Add a picture of the course </h4>
+          <input type="file" (change)="detectPictures($event)"
+                 class="form-control" accept="image/*">
+          <p class="text-success" *ngIf="pictureUploaded">Fichier chargé !</p>
+      </div>
+
+      <div class="form-group">
+        <h4>Add the video course </h4>
+        <input type="file" (change)="detectVideos($event)"
+               class="form-control" accept="video/*">
+        <p class="text-success" *ngIf="videoUploaded">Vidéo chargé !</p>
+      </div>
+      <button class="btn btn-success" [disabled]="courseForm.invalid || pictureIsUploading|| videoIsUploading  "
+            type="submit">Save
+      </button>
+  
+      </form>
+    </div>
+  </div>

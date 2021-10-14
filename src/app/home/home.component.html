@@ -1,10 +1,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+<script src="https://kit.fontawesome.com/089ec4e908.js" crossorigin="anonymous"></script>
+</head>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6 col-md-8 col-sm-9">
-            <div style="padding-top: 150px; padding-left:80px;" class="float-left">
+            <div style="padding-top: 280px; padding-bottom: 250px; padding-left:80px;" class="float-left">
     
             <h3 class="display-4" style=" font-family: 'Roboto', sans-serif; color: #134e6f; ;">Get the best resources and courses </h3>
             <h3 class="display-4" style=" font-family: 'Roboto', sans-serif;  color: #134e6f; ">build your career in a </h3>
@@ -15,16 +22,186 @@
             <br>
     
             <br>
-            <button *ngIf="!isAuth" (click)="onAccess()" class="brtn btn-sm" style="border-radius: 15px; padding-right:60px; padding-left:60px; padding-top:10px; padding-bottom:10px; background-color:#1AC0C6; color: white; border-color: #1AC0C6; font-size: 30px;">Get Access</button>
+            <button *ngIf="!isAuth" (click)="onAccess()" class="btn btn-sm" style="border-radius: 15px; padding-right:60px; padding-left:60px; padding-top:10px; padding-bottom:10px; background-color:#1AC0C6; color: white; border-color: #1AC0C6; font-size: 30px;">Get Access</button>
             </div>
         </div>
         <div class="col-lg-6 col-md-4 col-sm-3">
             <div style="padding-top: 60px;" >
-                <img class="img-fluid" alt="Responsive image"  style="height:729px; width:920px;right:60px ; border-radius: 14px; padding-top: 0px;
+                <img class="img-fluid" alt="Responsive image"  style="height:729px; width:920px;right:60px ; border-radius: 14px;
                 " src="../assets/hoome.png">
             </div>
         </div>
-
-
     </div>
 </div>
+
+
+
+<div class="container-fluid" style="background-color:#f1f1f1 ;">
+    <div class="row align-items-center">
+        <div class="col-lg-8 col-md-8 col-sm-9 offset-md-2  offset-sm-2">
+
+                    <div style=" padding-top: 100px; padding-bottom: 100px;"  >
+            <h3 class="display-6 text-lg-center" style=" font-family: 'Roboto', sans-serif; color: #134e6f; ;">Explore Featured <a style="color: #1AC0C6;">Courses</a></h3>
+            <h5 class="fw-normal text-center">Choose what you'd like to learn from our variant learning library</h5>
+                <h5 class="fw-normal text-center"> Find the right instructor for you. Learn on your schedule.</h5>
+               
+                <!-- courses -->
+                    <div class="container">
+                        <a> {{onHomeCourses()}}  </a>
+                        <div  class="d-flex mt-5 justify-content-center">
+                          <div class="container">
+                            <div  class="row row-cols-1 row-cols-md-3 g-4 ">
+                           <app-courses-list-item  *ngFor="let course of HomeCours; let i=index;" [course]="course">
+                        </app-courses-list-item>    
+
+                          </div>
+                      </div>
+                        </div>
+                        <div class="row-cols-2 offset-md-4" style="padding-left: 25px; padding-top: 35px;" >
+                        <button (click)="onMore()" id="btn-more" class="btn-sm">Explore More Courses </button>
+                        </div>
+
+                    </div>
+
+        </div>
+    </div>
+    </div>
+</div>
+
+
+            <!-- Categories -->
+
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-lg-8 col-md-8 col-sm-9 offset-md-2  offset-sm-2">
+                    <div style=" padding-top: 150px; padding-bottom: 100px;"  >
+            <h3 class="display-6 text-lg-center" style=" font-family: 'Roboto', sans-serif; color: #134e6f; ;">Explore Featured <a style="color: #1AC0C6;">Categories</a></h3>
+            <h5 class="fw-normal text-center"> Keep up with the topics and trends you care about the most, Build your library 
+            </h5>
+            <h5 class="fw-normal text-center">for your career and personal growth. Explore a variety of fresh topics.
+            </h5>
+                <br>
+        
+
+                <div class="container">
+                    <div class="row ">                          
+                        <div class="card text-dark offset-md-1 bg-light mb-3" style="max-width: 13rem; max-height: 8rem;" >
+  
+                          <div class="card-body">
+                              <h5 style="text-align: center;" class="card-title"><i  class="fa fa-code fa-2x" ></i>
+                              </h5>
+                              <p style=" font-weight: bold; text-align: center; font-size:20px;" class="card-text">Development</p>
+                          </div>
+                      </div>
+                          <div class="card text-dark offset-md-1  bg-light mb-3" style="max-width: 13rem; max-height: 8rem;" >
+                            <div class="card-body">
+                                <h5 style="text-align: center;" class="card-title"><i class="fa fa-line-chart fa-2x"></i>
+                                </h5>
+                                <p style=" font-weight: bold; text-align: center; font-size:20px;" class="card-text">Business</p>
+                              </div>
+                          </div>
+                          <div class="card text-dark offset-md-1 bg-light mb-3" style="max-width: 13rem; max-height: 8rem;"  >
+                            <div class="card-body">
+                                <h5 style="text-align: center;" class="card-title"><i style="font: bold; size: 5cm;" class="fa fa-lightbulb-o fa-2x" ></i>
+                                </h5>
+                               
+                                <p style=" font-weight: bold; text-align: center; font-size:20px;" class="card-text">Marketing</p>
+                              </div>
+                          </div>
+                    
+                            <div class="card text-dark offset-md-1 bg-light mb-3" style="max-width: 13rem; max-height: 8rem;">
+                                <div class="card-body">
+                                  <h5 style="text-align: center;" class="card-title"><i style="font: bold; size: 5cm;" class="fa fa-camera-retro fa-2x"></i>
+                                  </h5>
+                                  <p style=" font-weight: bold; text-align: center; font-size:20px;" class="card-text">Photography</p>
+                                </div>
+                              </div>
+                                    
+                       </div>
+                  </div>
+                    </div>
+        </div>
+    </div>
+</div>
+
+
+                  <!-- home 1 -->
+<div  class="container-fluid" style="background-color:#f1f1f1 ;">
+  <div class=" row align-items-center  offset-sm-2" style="padding-top: 100px; padding-bottom: 20px;" >
+      <div class="col-lg-6 col-md-8 col-sm-9 ">
+          <div class="float-left">
+  
+            <h3>We Have The Best Instructors Available In The City</h3>
+            <p>Hands-on learning experiences provide the most engaging and
+               effective way to learn real-world <br> concepts and skills that you need to be successful.
+               Transform your life through education with <br> SmartClass e-learning. Join SmartClass to learn all the courses on your schedule.</p>
+          <h5>
+            <i style="color:green;padding-right: 10px;" class="fa fa-check  fa-2x">
+            </i>
+            Full Lifetime Access
+          </h5>
+          <h5>
+            <i style="color:green;padding-right: 10px;" class="fa fa-check  fa-2x">
+            </i>
+            20+ Downloadable Resources
+          </h5>
+          <h5>
+            <i style="color:green;padding-right: 10px;" class="fa fa-check  fa-2x">
+            </i>
+            Different Categories
+          </h5>
+          <h5>
+            <i style="color:green;padding-right: 10px;" class="fa fa-check  fa-2x">
+            </i>
+            Free Courses
+          </h5>
+  
+          </div>
+      </div>
+      <div class="col-lg-6 col-md-4 col-sm-3">
+            <img class="img-fluid" alt="Responsive image"  style="height:529px; width:1020px;right:60px ; border-radius: 14px;
+            " src="../assets/home1.jpeg">
+      </div>
+    </div>
+  </div>
+
+                    <!-- home 2 -->
+        <div  class="container-fluid" style="background-color:#f1f1f1 ;">
+        <div class=" row align-items-center  offset-sm-2" style="padding-bottom: 20px;" >
+          <div class="col-lg-5 col-md-4 col-sm-3">
+            <img class="img-fluid" alt="Responsive image"  style="padding-top: 100px;height:559px; width:550px;right:60px ; border-radius: 14px;
+            " src="../assets/home2.jpeg">
+      </div>
+            <div class="col-lg-7 col-md-8 col-sm-9 ">
+        
+                  <h1 style="font: bold; font-size: 50px; padding-left: 50px;">Join Us </h1>
+                 <br>
+                <h5 style="font-size: 27px;">
+                  <span class="numberCircle"><span>1</span></span>
+                  <a style="padding-left: 20px; " > Create Account. </a> 
+
+                     
+                </h5>
+                <br>
+                <h5 style="font-size: 27px;">
+                  <span class="numberCircle"><span>2</span></span>
+                 <a style="padding-left: 20px; " >Join Membership. </a> 
+                </h5>
+                <br>
+                <h5 style="font-size: 27px;">
+                  <span class="numberCircle"><span>3</span></span>
+                  <a style="padding-left: 20px; " >Start Learning. </a> 
+                </h5>
+               
+            </div>
+        </div>        
+          </div>
+
+
+
+
+
+
+
+
+

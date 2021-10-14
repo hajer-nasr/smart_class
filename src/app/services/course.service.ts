@@ -7,36 +7,30 @@ import "firebase/firestore";
 import 'firebase/auth'; 
 import 'firebase/database';
 import 'firebase/storage';
+import { ToastrService } from "ngx-toastr";
 
 @Injectable()
 export class CourseService {
 
   courses:Course[]=[];
+  // courze !:Course;
   coursesSubject=new Subject<Course[]>();
 
+
+  
+  constructor(   
+       private toastr:ToastrService
+    ){
+    this.getCourses();
+  }
+  
   emitCourses() {
     this.coursesSubject.next(this.courses);
   }
-  
-  constructor(){
-    this.getCourses();
-  }
-
-
 
   saveCourses(){
     firebase.database().ref('/courses').set(this.courses);
   }
-
-  // getCourses() {
-  //   firebase.database().ref('/courses')
-  //   .on('value', (data: DataSnapshot) => {
-  //       this.courses = data.val() ? data.val() : [];
-  //       this.emitCourses();
-  //     }
-  //   );
-
-  // }
 
   getCourses(){
     firebase.database().ref('/courses').on(
@@ -47,12 +41,11 @@ export class CourseService {
     );
   }
 
-  
   getSingleCourse(id: number) {
-    return new Promise(
+    return new Promise<Course>(
       (resolve, reject) => {
-        firebase.database().ref('/coursess/' + id).once('value').then(
-          (data:Datasnapshot) => {
+        firebase.database().ref('/courses/' + id).once('value').then(
+          (data:Datasnapshot)=> {
             resolve(data.val());
           }, (error) => {
             reject(error);
@@ -66,9 +59,12 @@ export class CourseService {
     this.courses.push(newCourse);
     this.saveCourses();
     this.emitCourses();
-  }
+    }
+  
 
   removeCourse(course:Course ) {
+    if (window.confirm('Are sure you want to delete this course ?')) { 
+
     if(course.photo) {
       const storageRef = firebase.storage().refFromURL(course.photo);
       storageRef.delete().then(
@@ -93,10 +89,13 @@ export class CourseService {
     this.courses.splice(courseIndexToRemove, 1);
     this.saveCourses();
     this.emitCourses();
-  }
+    this.toastr.success(course.title + ' successfully deleted!');
+
+  }}
+  
 
 
-  uploadFile(file: File) {
+  uploadPicture(file: File) {
     return new Promise(
       (resolve, reject) => {
         const almostUniqueFileName = Date.now().toString();
@@ -123,5 +122,31 @@ export class CourseService {
     );
   }
 
+  uploadVideo(file: File) {
+    return new Promise(
+      (resolve, reject) => {
+        const almostUniqueFileName = Date.now().toString();
+        const upload = firebase.storage().ref()
+          .child('videos/' + almostUniqueFileName + file.name).put(file);
+        upload.on(firebase.storage.TaskEvent.STATE_CHANGED,
+          () => {
+            console.log('Video en cours de Chargement…');
+          },
+          (error) => {
+            console.log('Erreur de chargement ! : ' + error);
+            reject();
+          },
+          () => {
+            upload.snapshot.ref.getDownloadURL().then(
+              (downloadUrl) => {
+                console.log('Video Upload successful! ('+downloadUrl+')');
+                resolve(downloadUrl);
+              }
+            );
+          }
+        );
+      }
+    );
+  }
   
 }

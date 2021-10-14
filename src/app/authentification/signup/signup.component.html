@@ -1,110 +1,9 @@
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
-<div class="row">
-    <div style="padding-top: 30px; padding-left:900px;" class="col-sm-8 col-sm-offset-2">
-<h2 class="display-5" style="padding-left:110px ; font-family: 'Roboto', sans-serif; color: #134e6f;" >Créer un compte</h2>   
-<br> 
-<form class="row row-cols-1" [formGroup]="signupForm" (ngSubmit)="onCreate()">
-    <fieldset class="border p-5">
-    <div class="form-group">
-        <label style="font-size:25px;" for="nom">Nom : </label>
-        <div class="col-sm-4">
-
-        <input  type="text" id="nom" class="form-control" formControlName="nom">
-        </div>
-    </div>
-    <br>
-    <div class="form-group">
-        <label style="font-size:25px;" for="prenom">Prénom :</label>
-        <div class="col-sm-5">
-            <input type="text" id="prenom" class="form-control" formControlName="prenom" >
-        </div>
-    </div>
-    <br>
-
-    <div class="form-group">
-        <label style="font-size:25px;" for="dateNaiss">Date de naissance :</label>
-        <div class="col-sm-5">
-        <input type="date" id="dateNaiss"  class="form-control" formControlName="dateNaiss">
-    </div>
-</div>
-<br>
-<div class="form-group">
-    <label style="font-size:25px;" for="sexe">Sexe :</label>
-    <br>
-    <div class="form-check-inline">
-        <label class="form-check-label" for="radio1" >
-    <input type="radio" id="radio1" class="form-control"  
-    class="form-check-input" formControlName="sexe" 
-    name="optradio" value="femme" >
-    Femme
-</label>
-</div>
-<div class="form-check-inline">
-    <label class="form-check-label" for="radio2">
-        <input type="radio" id="radio2" 
-        class="form-control" class="form-check-input" formControlName="sexe" 
-        name="optradio" value="homme" >
-        Homme
-    </label>
-</div>
-</div>
-<br>
-
-<div class="form-group">
-<div class="dropdown">
-    <label style="font-size:25px;" for="niveau">Votre niveau d'étude :</label>
-
-    <div class="col-sm-5">
-    <select class="selectpicker" class="form-control" id="niveau" name="niveau" formControlName="niveau">
-        <option>Bac</option>
-        <option>Licence</option>
-        <option>Master</option>
-        <option>Cycle d'ingénieur</option>
-    </select>
-    </div>
-</div>
-</div>
-<br>
-    <div class="form-group">
-        <label style="font-size:25px;" for="speacialite">Spécialité :</label>
-        <div class="col-sm-5">
-            <input type="text" id="speacialite" class="form-control" formControlName="speacialite">
-        </div> 
-    </div>
-    <br>
-    <div class="form-group">
-        <label style="font-size:25px;" for="email">Adresse mail :</label>
-        <div class="col-sm-5">
-            <input type="text" id="email" class="form-control" formControlName="email">
-        </div> 
-    </div>
-    <br>
-    <div class="form-group">
-        <label style="font-size:25px;" for="password">Mot de Passe :</label>
-        <div class="col-sm-5">
-            <input type="password" id="password" class="form-control" formControlName="password">
-        </div>
-    </div>
-    <br>
-    <button class="btn btn-primary" type="submit"  [disabled]="signupForm.invalid">Créer compte</button>
-</fieldset>
-</form>
-<br>
-<p class="text-danger"> {{errorMessage}}</p>
-</div>
-</div>
-
- -->
-
-
  <div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
-        <div class="col-xl-5 col-lg-7 col-md-8 col-5 text-center">
+        <div class="col-xl-5 col-sm-10 col-md-8 col-lg-5 text-center">
    
             <div class="card">
-                <h5 class="text-center mb-4">Create an account</h5>
+                <h5  class="card-title text-center mb-5 fw-light fs-5" >Create an account</h5>
                 <form class="form-card" [formGroup]="signupForm" (ngSubmit)="onCreate()">
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-5 flex-column d-flex"> <label for="fname" class="form-control-label px-3">First name<span class="text-danger"> *</span></label> <input type="text" id="fname"  class="form-control" formControlName="fname"> </div>
@@ -118,16 +17,16 @@
         <label class="form-check-label" for="radio1" >
     <input type="radio" id="radio1" class="form-control"  
     class="form-check-input" formControlName="sexe" 
-    name="optradio" value="femme" >
-    Femme
+    name="sexe" value="femme" >
+    Female
 </label>
 </div>
 <div class="form-check-inline">
     <label class="form-check-label" for="radio2">
         <input type="radio" id="radio2" 
         class="form-control" class="form-check-input" formControlName="sexe" 
-        name="optradio" value="homme" >
-        Homme
+        name="sexe" value="homme" >
+        Male
     </label>
 </div>
  </div>
@@ -140,7 +39,7 @@
         <option>Cycle d'ingénieur</option>
     </select>
  </div>
-                        <div class="form-group col-sm-5 flex-column d-flex"> <label for="specialite" class="form-control-label px-3">Specialite<span class="text-danger"> *</span></label> <input type="text" id="specialite" class="form-control" formControlName="speacialite"> </div>
+                        <div class="form-group col-sm-5 flex-column d-flex"> <label for="specialite" class="form-control-label px-3">Field of study<span class="text-danger"> *</span></label> <input type="text" id="specialite" class="form-control" formControlName="speacialite"> </div>
                     </div>
 
                     <div class="row justify-content-between text-left">
@@ -149,11 +48,18 @@
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-5 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input type="password" id="password" class="form-control" formControlName="password"> </div>
                     </div>
+                    <br>
                     <div class="row justify-content-end">
-                        <div class="form-group col-sm-5"> <button type="submit" class="btn-block btn-primary" [disabled]="signupForm.invalid">Create account</button> </div>
+                        <p class="text-body"><a href="auth/signin">Already have an account ?   Login!</a></p>
+
+                        <div class="form-group col-sm-5">
+                             <button type="submit" class="btn-block  btn-outline-primary" [disabled]="signupForm.invalid">
+                                 Create account
+
+                             </button> 
+                        </div>
                     </div>
                 </form>
-                <br>
                 <p class="text-danger"> {{errorMessage}}</p>
 
             </div>

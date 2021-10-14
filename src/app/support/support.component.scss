@@ -1,0 +1,36 @@
+input,
+textarea,
+button {
+    padding: 10px 15px;
+    border-radius: 10px !important;
+    margin: 8px 0px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-size: 20px !important;
+    font-weight: 300
+}
+
+.btn-block {
+    text-transform: uppercase;
+    font-size: 20px !important;
+    font-weight: 400;
+    height: 50px;
+    cursor: pointer;
+    width: 23cm;
+}
+
+
+.form  , .form-floating{
+    width: 23cm;
+}
+
+
+.na:hover {
+    text-decoration: underline;
+}
+
+.na {
+     color: rgb(131, 128, 128);
+     text-decoration: none;
+     size: 90px;
+}

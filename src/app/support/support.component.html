@@ -1,0 +1,82 @@
+<div style="padding-top: 0px;" class="container-fluid">
+  <div class="col-sm-12 ">
+          <img class="img-fluid" alt="Responsive image"  style="height:550px; width:2720px;right:60px ;padding-top: 70px;
+          " src="../assets/support.png">
+  </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row align-items-center">
+        <div class="col-lg-7 col-md-6 col-sm-6  offset-sm-1">
+          <h1 style="font-size:50px; padding-top: 50px; padding-bottom: 15px; font-weight: bold;">
+            Let Us Connect
+          </h1>
+          <p style="font-size: 18px; padding-bottom: 10px;">Please contact us using the information below.<br> To locate us contacts in the Business office closest to you, visit our office websites.</p>
+
+            <form  [formGroup]="supportForm" (ngSubmit)="onSaveForm()">
+                <div class="form-floating mb-4">
+                    <label for="name">Name </label>
+                    <input type="text" class="form-control" formControlName="name" id="name" >
+                  </div>
+    
+                <div class="form-floating mb-1 ">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                </div>
+                <div class="form mb-5">
+                    <label for="message"></label>
+                    <textarea class="form-control" placeholder="How can we help ?"  id="message" formControlName="message"  rows="6" ></textarea>
+    
+                </div>
+                  
+                <div class="d-grid">
+                  <button class="btn-block btn-outline-success text-uppercase" type="submit" [disabled]="supportForm.invalid">
+                    Send Message
+                  </button> 
+                </div>
+              
+              </form>
+        </div>
+        
+        <div style="padding-top: 150px; " class="col-lg-4 col-md-6 col-sm-6  ">
+          <div class="card text-dark bg-light mb-3" style="width: 28rem;">
+            <div class="card-body">
+              <h5 style="font-size: 30px ; padding-bottom: 5px;" class="card-title">Locate Us :</h5>
+
+              <p  style="font-size: 25px ;color: rgb(117, 117, 117);" class="card-text">
+                <i style="padding-right: 10px; color: black;" class="fa fa-map-marker">
+                </i>
+                125, Park street aven, <br> Brocklyn,Newyork.
+              </p>
+            </div>
+          </div>
+        <div style="padding-top: 25px;" class="col-lg-6 col-md-6 col-sm-6 ">
+            <div class="card text-dark bg-light mb-3" style="width: 28rem;">
+              <div class="card-body">
+                <h5 style="font-size: 30px ;padding-bottom: 5px;" class="card-title" >Mail Us 24/7 :
+                </h5>
+                <p style="font-size: 25px ;color: rgb(117, 117, 117);">
+                  <i style="padding-right: 10px; color: black;" class="fa fa-envelope">
+                  </i>
+                  <a class="na" href="mailto:info@smart-class.com">
+                    info@smart-class.com
+                  </a>
+                </p>
+              </div>
+            </div>
+
+              <div style="padding-top: 25px;" class="col-lg-6 col-md-8 col-sm-9  ">
+                <div class="card text-dark bg-light mb-3" style="width: 28rem;">
+                  <div class="card-body">
+                    <h5 style="font-size: 30px ;padding-bottom: 10px;" class="card-title">Call Us :
+                    </h5>
+                    <p> <i style="padding-right: 10px; color: black;" class="fa fa-phone fa-2x"></i>
+                      <a style="font-size: 25px ;color: rgb(117, 117, 117);" class="na" href="tel:+919246147999">+91 924-614-7999</a></p>
+                   
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+

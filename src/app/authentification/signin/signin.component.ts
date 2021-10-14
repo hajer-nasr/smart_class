@@ -29,6 +29,17 @@ this.signinForm=this.formBuilder.group({
 onConnexion(){
   const email=this.signinForm.get('email')?.value;
   const password=this.signinForm.get('password')?.value;
+  if (email=="admin@gmail.com"){
+    this.authService.signInUser(email,password).then(
+      () => {
+              this.router.navigate(['admin']);
+      },
+      (error) => {
+        this.errorMessage=error;
+      }
+    )
+  }
+  else {
   this.authService.signInUser(email,password).then(
     () => {
             this.router.navigate(['home']);
@@ -41,6 +52,7 @@ onConnexion(){
       
     }
   )
+  }
 }
   
 

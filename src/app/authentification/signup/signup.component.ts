@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,7 +13,10 @@ export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   errorMessage!:string;
 
-  constructor(private formBuilder:FormBuilder, private router:Router, private authService:AuthService) { }
+  constructor(private formBuilder:FormBuilder, private router:Router,
+     private authService:AuthService,
+     private toastr:ToastrService
+     ) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -22,8 +26,8 @@ export class SignupComponent implements OnInit {
   initForm() {
     this.signupForm=this.formBuilder.group(
       {
-        fname:['',[Validators.required]],
-        lname:['',[Validators.required]],
+        fname:['',[Validators.required, Validators.minLength(2)]],
+        lname:['',[Validators.required, Validators.minLength(2)]],
         birthDate:['',[Validators.required]],
         sexe:['',[Validators.required]],
         niveau:['',[Validators.required]],
@@ -41,7 +45,8 @@ onCreate() {
   this.authService.createNewUser(email,password).then(
     () => {
       this.router.navigate(['home']);
-      alert("votre compte créer");
+      this.toastr.success(this.signupForm.controls['fname'].value + ' your account is successfully created!');
+
     },
     (error) => {
       this.errorMessage=error;
