@@ -1,0 +1,112 @@
+<nav style="height: 75px;"  class="navbar navbar-dark ms-auto fixed-top  bg-dark navbar-expand-md">
+  <a style="font-size:30px; padding-left: 20px; padding-right:50px" class="navbar-brand" href="#">
+    <img src="../assets/logo.jpg" width="30" height="30"  alt="">
+     Smart Class 
+  </a> 
+  <!-- <div class="align-items-end" > -->
+      <div style="padding: 15px;" class="position-absolute top-0 end-0">
+ <h2 style="color: white;" >Dashboard Admin </h2>
+  </div>
+</nav>          
+
+
+<div style="padding-top: 100PX;" class="sidebar-container">
+
+  <ul class="sidebar-navigation">
+    <li routerLinkActive="active "><a class="nav-link" aria-current="page" routerLink="../../admin"><i class="fa fa-home"></i>Home Admin </a>
+    </li>
+      <li routerLinkActive="active"><a class="nav-link" aria-current="page" routerLink="../users"><i class="fa fa-user"></i>Users</a></li>
+      <li routerLinkActive="active "><a class="nav-link" aria-current="page" routerLink="../view"><i class="fa fa-line-chart"></i>Course's list</a></li>
+      <li routerLinkActive="active"><a class="nav-link" aria-current="page" routerLink="../new"><i class="fa fa-comment-o"></i>Add Course</a></li>
+     
+    
+  </ul>
+</div>
+
+<div style="padding-top: 100px;" class="content-container">
+
+  <div class="container-fluid">
+
+    <div class="jumbotron">
+ 
+    <h1 style="text-align: center; font-weight: bolder; color: #134e6f;">Add a new Course</h1>
+   
+    <div class="d-flex mt-5 justify-content-center">
+      <div class="container">
+    <form [formGroup]="courseForm" (ngSubmit)="onSaveCourse()">
+      <div class="form-group">
+          <label for="id"><h5>Id</h5></label>
+          <input type="text" id="id"
+                 class="form-control" formControlName="id">
+        </div>
+
+        <div class="form-group">
+
+        <label for="title"><h5>Title</h5></label>
+        <input type="text" id="title"
+               class="form-control" formControlName="title">
+      </div>
+      <div class="form-group">
+        <label for="category"><h5>Category</h5></label>
+        <input type="text" id="category"
+               class="form-control" formControlName="category">
+      </div>
+      <div class="form-group">
+        <label for="duration"><h5>Duration</h5></label>
+        <input type="text" id="duration"
+               class="form-control" formControlName="duration">
+      </div>
+      <div class="form-group">
+        <label for="level"><h5>Level</h5></label>
+        <input type="text" id="level"
+               class="form-control" formControlName="level">
+      </div>
+      <div class="form-group">
+        <label for="date"><h5>Date of Addition</h5></label>
+        <input type="text" id="date"
+               class="form-control" formControlName="date">
+      </div>
+      <div class="form-group">
+        <label for="description"><h5>Description</h5></label>
+        <textarea id="description"
+               class="form-control" formControlName="description">
+        </textarea>
+      </div>
+     
+
+      <div class="form-group">
+        <label for="details"><h5>Course Details</h5> </label>
+        <textarea id="details"
+               class="form-control" formControlName="details" rows="5">
+        </textarea>
+      </div>
+      <div class="form-group">
+        <h5>Add a picture of the course </h5>
+     
+        <input type="file" (change)="detectPictures($event)"
+               class="form-control" accept="image/*">
+        <p class="text-success" *ngIf="pictureUploaded">Fichier chargé !</p>
+    </div>
+    <br>
+    
+
+    <div class="form-group">
+      <h5>Add the video course </h5>
+      <input type="file" (change)="detectVideos($event)"
+             class="form-control" accept="video/*">
+      <p class="text-success" *ngIf="videoUploaded">Vidéo chargé !</p>
+    </div>
+    <br>
+    <button style="width: 4cm;" class="btn btn-success" [disabled]="courseForm.invalid || pictureIsUploading|| videoIsUploading  "
+          type="submit">Save Course
+    </button>
+
+    </form>
+  </div>
+</div>
+      
+   
+    </div>
+
+  </div>
+</div>

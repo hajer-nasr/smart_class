@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { user } from './user.model';
 
 @Component({
   selector: 'app-signup',
@@ -13,10 +14,12 @@ export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   errorMessage!:string;
 
-  constructor(private formBuilder:FormBuilder, private router:Router,
-     private authService:AuthService,
-     private toastr:ToastrService
-     ) { }
+  constructor(
+    private formBuilder:FormBuilder,
+    private router:Router,
+    private authService:AuthService,
+    private toastr:ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -31,7 +34,7 @@ export class SignupComponent implements OnInit {
         birthDate:['',[Validators.required]],
         sexe:['',[Validators.required]],
         niveau:['',[Validators.required]],
-        speacialite:['',[Validators.required]],
+        specialite:['',[Validators.required]],
         email:['',[Validators.required, Validators.email]],
         password:['',[Validators.required, Validators.pattern(/[0-9a-zA-Z]{8,}/)]],
         
@@ -40,12 +43,23 @@ export class SignupComponent implements OnInit {
   }
 
 onCreate() {
+  const fname=this.signupForm.get('fname')?.value;
+  const lname=this.signupForm.get('lname')?.value;
+  const birthDate=this.signupForm.get('birthDate')?.value;
+  const sexe=this.signupForm.get('sexe')?.value;
+  const niveau=this.signupForm.get('niveau')?.value;
+  const specialite=this.signupForm.get('specialite')?.value;
   const email=this.signupForm.get('email')?.value;
   const password=this.signupForm.get('password')?.value;
-  this.authService.createNewUser(email,password).then(
+
+  const newUser=new user(fname,lname,birthDate,sexe,niveau,specialite,email);
+  this.authService.createNewUser(newUser);
+  console.log("add fel firebase");
+
+  this.authService.signUpUser(email,password).then(
     () => {
       this.router.navigate(['home']);
-      this.toastr.success(this.signupForm.controls['fname'].value + ' your account is successfully created!');
+      this.toastr.success(this.signupForm.controls['fname'].value + ' your account is successfully created !');
 
     },
     (error) => {

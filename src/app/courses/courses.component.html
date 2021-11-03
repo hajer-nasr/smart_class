@@ -54,7 +54,7 @@
     <app-courses-list-item
     *ngFor="let course of DeveloperCours; let i=index;"
     [course]="course"
-    (click)="onViewCourse(i+1)">
+    (click)="onViewCourse(course.id)">
     </app-courses-list-item>
 
   </div>

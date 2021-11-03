@@ -1,4 +1,4 @@
- <div class="container-fluid px-1 py-5 mx-auto">
+<div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
         <div class="col-xl-5 col-sm-10 col-md-8 col-lg-5 text-center">
    
@@ -6,41 +6,45 @@
                 <h5  class="card-title text-center mb-5 fw-light fs-5" >Create an account</h5>
                 <form class="form-card" [formGroup]="signupForm" (ngSubmit)="onCreate()">
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-5 flex-column d-flex"> <label for="fname" class="form-control-label px-3">First name<span class="text-danger"> *</span></label> <input type="text" id="fname"  class="form-control" formControlName="fname"> </div>
-                        <div class="form-group col-sm-5 flex-column d-flex"> <label for="lname" class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> <input type="text" id="lname" class="form-control" formControlName="lname"> </div>
+                        <div class="form-group col-sm-5 flex-column d-flex">
+                             <label for="fname" class="form-control-label px-3">First name<span class="text-danger"> *</span></label>
+                              <input type="text" id="fname"  class="form-control" formControlName="fname">
+                        </div>
+                        <div class="form-group col-sm-5 flex-column d-flex"> <label for="lname" class="form-control-label px-3">
+                            Last name<span class="text-danger"> *</span></label>
+                             <input type="text" id="lname" class="form-control" formControlName="lname">
+                        </div>
                     </div>
-                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-5 flex-column d-flex"> <label for="birthDate" class="form-control-label px-3">Date of birth<span class="text-danger"> *</span></label>  <input type="date" id=" birthDate"  class="form-control" formControlName="birthDate"> </div>
-                        <div class="form-group col-sm-5 flex-column d-block"> <label for="sexe" class="form-control-label px-3">Sexe<span class="text-danger"> *</span></label>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-5 flex-column d-flex"> <label for="birthDate" class="form-control-label px-3">
+                            Date of birth<span class="text-danger"> *</span></label> <input type="date" id=" birthDate" class="form-control" formControlName="birthDate">
+                        </div>
+                        <div class="form-group col-sm-5 flex-column d-block"> <label for="sexe" class="form-control-label px-3">Sexe
+                            <span class="text-danger"> *</span> </label>
                         <br>
-                             <div class="form-check-inline">
-        <label class="form-check-label" for="radio1" >
-    <input type="radio" id="radio1" class="form-control"  
-    class="form-check-input" formControlName="sexe" 
-    name="sexe" value="femme" >
-    Female
-</label>
-</div>
-<div class="form-check-inline">
-    <label class="form-check-label" for="radio2">
-        <input type="radio" id="radio2" 
-        class="form-control" class="form-check-input" formControlName="sexe" 
-        name="sexe" value="homme" >
-        Male
-    </label>
-</div>
- </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label" for="radio1" ><input type="radio" id="radio1" class="form-control"  
+                            class="form-check-input" formControlName="sexe" name="sexe" value="Female" > Female </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <label class="form-check-label" for="radio2">
+                            <input type="radio" id="radio2" 
+                            class="form-control" class="form-check-input" formControlName="sexe" 
+                            name="sexe" value="Male" >Male </label>
+                        </div>
+                    </div>
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-5 flex-column d-flex"> <label for="niveau" class="form-control-label px-3">Education level <span class="text-danger"> *</span></label> <select class="selectpicker" class="form-control" id="niveau" name="niveau" formControlName="niveau">
-        <option>Bac</option>
-        <option>Licence</option>
-        <option>Master</option>
-        <option>Cycle d'ingénieur</option>
-    </select>
- </div>
-                        <div class="form-group col-sm-5 flex-column d-flex"> <label for="specialite" class="form-control-label px-3">Field of study<span class="text-danger"> *</span></label> <input type="text" id="specialite" class="form-control" formControlName="speacialite"> </div>
-                    </div>
+                            <option>Bachelor Degree</option>
+                            <option>Licence</option>
+                            <option>Master Degree</option>
+                            <option>Engineering</option> </select>
+                        </div>
+                        <div class="form-group col-sm-5 flex-column d-flex">
+                             <label for="specialite" class="form-control-label px-3">Field of study<span class="text-danger"> *</span></label>
+                            <input type="text" id="specialite" class="form-control" name="specialite" formControlName="specialite"> </div>
+                        </div>
 
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-5 flex-column d-flex"> <label class="form-control-label px-3">Email <span class="text-danger"> *</span></label> <input type="text" id="email" class="form-control" formControlName="email"> </div>

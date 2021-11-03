@@ -17,10 +17,10 @@ course!:Course;
     this.course = new Course(0, '','','','','','','');
 
     const id = this.route.snapshot.params['id'];
+    console.log('id course', id)
     this.courseService.getSingleCourse(+id).then(
       (course:Course) => {
         this.course = course;
-        
       }
     );
   }

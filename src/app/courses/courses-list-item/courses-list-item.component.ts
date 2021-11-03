@@ -14,22 +14,18 @@ import { Router } from '@angular/router';
 export class CoursesListItemComponent implements OnInit {
   @Input()
   course!: Course;
-  // @Input()
-  // indexe!: number ;
- 
   constructor(@Inject(DOCUMENT) private document: Document , private courseService:CourseService,private router:Router) { }
 
   ngOnInit(): void {
-    
   }
 
-  
   onDeleteCourse(course: Course) {
     this.courseService.removeCourse(course);
   }
   
   onViewCourse(id: number) {
     this.router.navigate(['/courses/', 'view', id]);
+    
   }
 
   // update(id:number){

@@ -11,12 +11,9 @@ import { ToastrService } from "ngx-toastr";
 
 @Injectable()
 export class CourseService {
-
+  
   courses:Course[]=[];
-  // courze !:Course;
   coursesSubject=new Subject<Course[]>();
-
-
   
   constructor(   
        private toastr:ToastrService
@@ -60,11 +57,9 @@ export class CourseService {
     this.saveCourses();
     this.emitCourses();
     }
-  
 
   removeCourse(course:Course ) {
     if (window.confirm('Are sure you want to delete this course ?')) { 
-
     if(course.photo) {
       const storageRef = firebase.storage().refFromURL(course.photo);
       storageRef.delete().then(
@@ -93,8 +88,6 @@ export class CourseService {
 
   }}
   
-
-
   uploadPicture(file: File) {
     return new Promise(
       (resolve, reject) => {
@@ -133,7 +126,7 @@ export class CourseService {
             console.log('Video en cours de Chargement…');
           },
           (error) => {
-            console.log('Erreur de chargement ! : ' + error);
+            console.log('Erreur de chargement du video ! : ' + error);
             reject();
           },
           () => {

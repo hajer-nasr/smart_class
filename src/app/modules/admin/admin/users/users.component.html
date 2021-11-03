@@ -1,0 +1,69 @@
+<nav style="height: 75px;"  class="navbar navbar-dark ms-auto fixed-top  bg-dark navbar-expand-md">
+    <a style="font-size:30px; padding-left: 20px; padding-right:50px" class="navbar-brand" href="#">
+      <img src="../assets/logo.jpg" width="30" height="30"  alt="">
+       Smart Class 
+    </a> 
+        <div style="padding: 15px;" class="position-absolute top-0 end-0">
+   <h2 style="color: white;" >Dashboard Admin </h2>
+    </div>
+  </nav>          
+    
+  <div style="padding-top: 100PX;" class="sidebar-container">
+      <ul class="sidebar-navigation">
+      <li routerLinkActive="active "><a class="nav-link" aria-current="page" routerLink="../../admin"><i class="fa fa-home"></i>Home Admin </a>
+      </li>
+      <li routerLinkActive="active"><a class="nav-link" aria-current="page" routerLink="../users"><i class="fa fa-user"></i>Users</a></li>
+
+          <li routerLinkActive="active "><a class="nav-link" aria-current="page" routerLink="../view"><i class="fa fa-line-chart"></i>Course's list</a></li>
+        <li routerLinkActive="active"><a class="nav-link" aria-current="page" routerLink="../new"><i class="fa fa-comment-o"></i>Add Course</a></li>     
+    </ul>
+  </div>
+  
+  <div style="padding-top: 100px;" class="content-container">
+      <div class="container-fluid">
+        <div class="jumbotron">
+        <h1 style="text-align: center; font-weight: bolder; padding-bottom: 25px;  color: #134e6f;">Users's List</h1>
+
+        <div class="container">
+          <div class="table-responsive">
+
+            <table class="table table-striped table-bordered">
+              <thead class="thead">
+                <tr >
+                  <th style=" min-width: 2rem;" scope="col"></th>
+                  <th style=" min-width: 8rem;" scope="col">First Name</th>
+                  <th style=" min-width: 9rem;" scope="col">Last Name</th>
+                  <th style=" min-width: 10rem;" scope="col">Date of Birth</th>
+                  <th style=" min-width: 5rem;" scope="col">Sexe</th>
+                  <th style=" min-width: 13rem;" scope="col">Level of Studies</th>
+                  <th style=" min-width: 12rem;" scope="col">Field of Study</th>
+                  <th style=" min-width: 15rem;" scope="col">Email-Address</th>
+                  <th style=" min-width: 6rem;" scope="col"></th>
+                </tr>
+              </thead>
+              <tbody class="tbody"  *ngFor="let user of usersg;let i=index">
+                <tr>
+                  <th scope="row">{{i}}</th>
+                  <td> {{user.fname}}</td>
+                  <td> {{user.lname}}</td>
+                  <td> {{user.birthdate}}</td>
+                  <td> {{user.sexe}}</td>
+                  <td> {{user.niveau}}</td>
+                  <td> {{user.specialite}}</td>
+                  <td> {{user.email}}</td>
+                  <td>
+                    <button class="btn btn-outline-danger" (click)="onDeleteUser(user[i+1])">
+                      Delete User
+                      <span class="glyphicon glyphicon-minus">                         
+                      </span>
+                  </button> 
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>        
+         </div>
+      </div>
+  </div>
+

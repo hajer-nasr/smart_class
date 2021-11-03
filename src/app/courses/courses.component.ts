@@ -1,9 +1,8 @@
-import { Component, Inject, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Course } from './courses.model';
 import { CourseService } from '../services/course.service';
-import { DOCUMENT } from '@angular/common';
 
 @Input ()
 @Component({
@@ -23,10 +22,8 @@ export class CoursesComponent implements OnInit,OnDestroy   {
   DesignCours:any[]=[];
   AllCours:any[]=[];
 
-
   constructor(private router:Router,
-      private courseService:CourseService,
-      @Inject(DOCUMENT) private document: Document
+    private courseService:CourseService,
       )  { 
       }
   
@@ -39,7 +36,8 @@ export class CoursesComponent implements OnInit,OnDestroy   {
       this.courseService.getCourses();
       this.courseService.emitCourses();
       this.onCategory('');
-  }
+      console.log(this.courses);
+      }
 
   onNewCourse() {
     this.router.navigate(['/courses','new']);
@@ -49,12 +47,9 @@ export class CoursesComponent implements OnInit,OnDestroy   {
     this.courseService.removeCourse(course);
     }
     
-
-  onViewCourse(id: number) {
+  onViewCourse(id:number) {
     this.router.navigate(['/courses', 'view', id]);
   }
-
- 
 
   onCategory(param:string){
       this.DeveloperCours=[];
@@ -75,7 +70,6 @@ export class CoursesComponent implements OnInit,OnDestroy   {
           if(cours.category === 'Marketing' ){
             this.MarketingCours.push(cours);
             this.AllCours.push(cours);
-
           }
           if(cours.category === ' Photography' ){
             this.PhotographyCours.push(cours);
